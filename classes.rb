@@ -28,7 +28,6 @@ class Station
       end
     end
   end
-  
 end
 
 
@@ -60,7 +59,6 @@ class Route
   def all_station
     puts @station_list
   end
-
 end
 
 
@@ -120,5 +118,4 @@ end
   def current_station
     self.station_list[self.station_list.index(self.station)]
   end
-
 end
