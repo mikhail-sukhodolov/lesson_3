@@ -23,7 +23,7 @@ class Station
 # может возвращать список поездов на станции по типу (см. ниже): кол-во грузовых, пассажирских
   def get_type(type)
 	  @trains.select {|train| train.type == type}            
-	end
+  end
 end
 
 
