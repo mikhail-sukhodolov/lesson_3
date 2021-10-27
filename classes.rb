@@ -40,7 +40,7 @@ class Route
   end
 
   def add_station(station)
-    self.station_list.push(station)
+    self.station_list.insert(-2,station)
   end
 
 # может удалять промежуточную станцию из списка
