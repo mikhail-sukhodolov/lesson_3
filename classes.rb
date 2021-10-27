@@ -90,13 +90,13 @@ class Train
 
 # может принимать маршрут следования (объект класса Route), при назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте.
   def add_route(route)
-  	  @route = route
-     self.station = self.route.station_list.first
+  	 @route = route
+    self.station = self.route.station_list.first
   end
     
 # может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз, возвращать предыдущую станцию, текущую, следующую, на основе маршрута
   def next_station
-  	 self.route.station_list[self.route.station_list.index(self.station) + 1]
+    self.route.station_list[self.route.station_list.index(self.station) + 1]
   end
 
   def prev_station
@@ -104,7 +104,7 @@ class Train
   end
 
   def cur_station
-  	self.route.station_list[self.route.station_list.index(self.station)]
+    self.route.station_list[self.route.station_list.index(self.station)]
   end
 
   
