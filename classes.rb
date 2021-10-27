@@ -34,7 +34,6 @@ class Route
 
 # имеет начальную и конечную станцию, а также список промежуточных станций. Начальная и конечная станции указываютсся при создании маршрута, а промежуточные могут добавляться между ними
   attr_accessor :station_list
-  attr_reader :first_station
 
   def initialize (first_station, last_station)
     @station_list = [first_station, last_station]
