@@ -34,6 +34,7 @@ class Route
 
 # имеет начальную и конечную станцию, а также список промежуточных станций. Начальная и конечная станции указываютсся при создании маршрута, а промежуточные могут добавляться между ними
   attr_accessor :station_list
+  attr_reader :first_station
 
   def initialize (first_station, last_station)
     @station_list = [first_station, last_station]
@@ -80,28 +81,39 @@ class Train
 
 # может прицеплять/отцеплять вагоны (по одному вагону за операцию, метод просто увеличивает или уменьшает количество вагонов). Прицепка/отцепка вагонов может осуществляться только если поезд не движется
   def add_wagons
-     self.wagons +=1 if @speed == 0
+     @wagons +=1 if @speed == 0
   end
 
   def  delete_wagons
-    self.wagons -=1 if @speed == 0 && wagons > 1
+    @wagons -=1 if @speed == 0 && wagons > 1
   end
 
 # может принимать маршрут следования (объект класса Route), при назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте.
   def add_route(route)
+  	  @route = route
      self.station = self.route.station_list.first
   end
     
 # может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз, возвращать предыдущую станцию, текущую, следующую, на основе маршрута
   def next_station
-    self.station_list[self.route.station_list.index(self.station) + 1]
+  	 self.route.station_list[self.route.station_list.index(self.station) + 1]
   end
 
   def prev_station
-    self.station_list[self.route.station_list.index(self.station) - 1]
+    self.route.station_list[self.route.station_list.index(self.station) - 1]
   end
 
-  def current_station
-    self.station_list[self.route.station_list.index(self.station)]
+  def cur_station
+  	self.route.station_list[self.route.station_list.index(self.station)]
   end
+
+  
+  def move_forward
+    self.station = next_station if next_station != nil
+  end
+
+  def move_back
+    self.station = prev_station if cur_station != self.route.station_list.first
+  end  	  
+
 end
