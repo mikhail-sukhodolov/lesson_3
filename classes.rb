@@ -12,17 +12,17 @@ class Station
 
 # может принимать поезда (по одному за раз)
   def get_train(train)
-    self.trains.push(train)
+    @trains.push(train)
   end
 
 # может отправлять поезда (по одному за раз, при этом, поезд удаляется из списка поездов, находящихся на станции).
   def departure(train)
-    self.trains.delete(train)
+    @trains.delete(train)
   end
 
 # может возвращать список поездов на станции по типу (см. ниже): кол-во грузовых, пассажирских
   def get_type(type)
-    self.trains.select {|train| train.type == type}            
+    @trains.select {|train| train.type == type}            
   end
 end
 
