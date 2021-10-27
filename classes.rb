@@ -109,7 +109,7 @@ class Train
 
   
   def move_forward
-    self.station = next_station if next_station != self.route.station_list.last
+    self.station = next_station if next_station != nil
   end
 
   def move_back
