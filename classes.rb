@@ -90,7 +90,7 @@ class Train
 
 # может принимать маршрут следования (объект класса Route), при назначении маршрута поезду, поезд автоматически помещается на первую станцию в маршруте.
   def add_route(route)
-  	 @route = route
+    @route = route
     self.station = self.route.station_list.first
   end
     
